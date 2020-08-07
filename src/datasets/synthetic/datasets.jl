@@ -10,7 +10,7 @@ struct Sinusoid <: AbstractSyntheticDataSet
     p_ϕ::UnivariateDistribution
     p_x::UnivariateDistribution
 end
-Sinusoid() = Sinusoid(Uniform(0.1, 0.5), Uniform(0.0, π), Uniform(-5.0, 5.0))
+Sinusoid() = Sinusoid(Uniform(0.1, 5.0), Uniform(0.0, π), Uniform(-5.0, 5.0))
 
 function Base.rand(p::Sinusoid, k::Int)
     A = rand(p.p_A)
@@ -43,7 +43,7 @@ struct SinusoidLinearMixture <: AbstractSyntheticDataSet
 end
 function SinusoidLinearMixture()
     return SinusoidLinearMixture(Bernoulli(),
-                                 Uniform(0.1, 0.5),
+                                 Uniform(0.1, 5.0),
                                  Uniform(0.0, π),
                                  Uniform(-3.0, 3.0),
                                  Uniform(-3.0, 3.0),
